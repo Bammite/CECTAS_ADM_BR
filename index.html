@@ -6,93 +6,113 @@
     <link rel="shortcut icon" type="x-icon" href="glogo.jpg">
     <title>Administration de la Communauté</title>
     <style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
 
-.container {
+        .container {
+            text-align: center;
+            margin: 50px auto;
+        }
+        .header {
+            margin-bottom: 2px;
+        }
+
+
+        .bureau-image,.entete{
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+        }
+
+        .login-form {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-form button {
+            background-color: #ff6347;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .principale {
+            text-align: justify;
+            margin-top: 20px;
+            padding: 0;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            /* Ajoutez des règles CSS spécifiques aux appareils mobiles si nécessaire */
+        }
+
+header {
+    background: #f4f4f4;
+    padding: 20px;
     text-align: center;
-    margin: 50px auto;
+    border-bottom: 1px solid #ccc;
 }
 
-.header {
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+header p {
+    margin: 0;
+    font-style: italic;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
     margin-bottom: 20px;
 }
 
-.bureau-image {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
+h2 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
 }
 
-.login-form {
-    max-width: 300px;
-    margin: 0 auto;
-    padding: 40px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+h4 {
+    color: #333;
 }
 
-.login-form input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+article {
+    margin-bottom: 15px;
 }
 
-.login-form button {
-    background-color: #ff6347;
+footer {
+    background: #333;
     color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.login-form button:hover {
-    background-color: #ff4500;
-}
-
-.links {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.links a {
-    background-color: #ff6347;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    margin: 5px;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    display: inline-block;
-}
-
-.links a:hover {
-    background-color: #ff4500;
-}
-
-@media (max-width: 600px) {
-    .links {
-        flex-direction: column;
-    }
-
-    .links a {
-        width: 80%;
-        margin: 10px auto;
-    }
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
     </style>
 </head>
@@ -103,39 +123,368 @@ body {
         </div>
         <div class="login-form" id="login-form">
             <h2>Connexion</h2>
-            <input type="text" id="username" placeholder="Identifiant" required>
-            <input type="password" id="password" placeholder="Mot de passe" required>
+            <input type="text" id="identifier" placeholder="Identifiant" required>
             <button onclick="login()">Se connecter</button>
-            <p id="error-message" style="color: red; display: none;">Identifiant ou mot de passe incorrect.</p>
+            <p id="error-message" style="color: red; display: none;">Identifiant incorrect.</p>
         </div>
-        <div class="links" id="links" style="display: none;">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScceLiGMt49JBKWFMi8oXEWJEc3zVNPY263fIPxGcW2X4PN-Q/viewform?usp=sf_link">Ajouter un don</a>           
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSde2WT4cjGJl5_O9BNmspQEyDLmVyYYNuaDieqEEw637UOROA/viewform?usp=sf_link">Ajouter une cotisation</a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc2tbQtRzuil92ZgdqrIHWtCmhtcwVeww6wgC-nDW0DahDpcg/viewform?usp=sf_link">Enregistrer une dépense</a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfe2BgZ7Cd8yf9vz_zgR3JyC0p55IJekE7ZYIpa5yJuje4DkA/viewform?usp=sf_link">Enregistrer un prêt</a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScTum1eDn4Nw-wfcGfdkxUlwPy-jafgm6JgVDggJQsqh_SUXw/viewform?usp=sf_link">Enregistrer un membre</a>
-            <a href="">Voir le sold de la communaute</a>
-            <a href="https://docs.google.com/spreadsheets/u/0/d/1bQlzLAoLkwiEGQw1K9HKxfJohEfqI8pTYNA4ntqOKcE/htmlview#gid=1606079844">Voir les membres</a>
+        <div class="principale" id="links">
+            <h1 class="statut"> </h1>
+                <header>
+                    <h1>Cercle des Etudiants et Chercheurs Togolais à Saint-Louis</h1>
+                    <p>Devise : « Travail, Liberté, Patrie »</p>
+                </header>
+                <main>
+                    <section id="chapter1">
+                        <h2>Chapitre 1 : De l’association, son siège et sa durée</h2>
+                        <article>
+                            <h4>Article 1</h4>
+                            <p>En date du Samedi 03 Mars 2012 a été fondée entre les adhérents aux présents statuts, une association régie par les lois en vigueur du CROUS de l’Université Gaston Berger de Saint-Louis. Le fonctionnement de l’association sera réglé par les présents statuts, en conformité avec le Centre Régional des Œuvres Universitaires de Saint-Louis (CROUS)</p>
+                        </article>
+                        <article>
+                            <h4>Article 2</h4>
+                            <p>L’association prend la dénomination suivante : Cercle des Etudiants et Chercheurs Togolais à Saint-Louis. Elle pourra être désignée par le sigle C.E.C.T.A.S.</p>
+                        </article>
+                        <article>
+                            <h4>Article 3</h4>
+                            <p>
+                                Le siège social de l’association est fixé à Saint-Louis, plus précisément à l’Université Gaston Berger <br>
+                                ⭕️ Sa circonscription s’étend uniquement sur la région de Saint-Louis</p>
+                        </article>
+                        <article>
+                            <h4>Article 4</h4>
+                            <p>L’association perdure tant que ses membres existent. Cependant, les activités de l’association durent tout au long de l’année civile.</p>
+                        </article>
+                    </section>
+                    <section id="chapter2">
+                        <h2>Chapitre 2 : De la qualité de membres de l’association</h2>
+                        <article>
+                            <h4>Article 5</h4>
+                            <p>L’association se compose :
+                                <ul>
+                                    <li>des membres actifs
+                                        
+                                    </li>
+                                    <li>des membres sympathisants</li>
+                                </ul>
+                                
+                                Les membres adhérents ont seuls le droit de voter aux assemblées générales. <br>
+                                Dans cette proposition, les membres sympathisants sont des personnes qui ne remplissent pas les conditions de citoyenneté togolaise et/ou qui ne s’engagent pas activement dans la responsabilité et par conséquent, ne sont ni électeurs, ni éligibles.
+                                <br>
+                                Pour être admis en tant que membre adhérent, il faut :
+                                <ul>
+                                    <li>être de citoyenneté togolaise et résidant à Saint-Louis</li>
+                                    <li>formuler et signer une demande écrite (pour les sympathisants uniquement)</li>
+                                    <li>accepter intégralement les statuts, le règlement intérieur régit par le
+                                        C.E.C.T.A.S</li>
+                                        <li>
+                                            s’engager à prendre des responsabilités actives et à participer aux activités
+                                            Les membres sympathisants peuvent être en nombre illimité et ne sont pas obligés de résider dans la circonscription de Saint-Louis. Ils devront respecter les statuts, le règlement intérieur mis en place par les membres du CECTAS
+                                        </li>
+                                        
+                                </ul>
+                                
+                            </p>
+                        </article>
+                        <article>
+                            <h4>Article 6</h4>
+                            <p>La qualité de membre se perd :</p>
+                            <ul>
+                                <li>par démission écrite,</li>
+                                <li>par décès,</li>
+                                <li>par absence répétée aux réunions sans justification</li>
+                            </ul>
+                            <p>Cette qualité se perd également dans les conditions suivantes :</p>
+                            <ul>
+                                <li>En cas de violation grave et perpétrée des règles régissant la communauté</li>
+                                <li>En cas de non cotisation sur une durée de cinq (05) mois</li>
+                                <li>En cas d’absence non justifiée du membre pour une durée excédent six (06) mois</li>
+                            </ul>
+                            <p>Cependant, le membre absent pour six mois ne perd que son statut de membre actif, il pourra être considéré automatiquement comme membre sympathisant de l’association. Idem pour tout membre ayant perdu sa qualité pour cause de voyage.</p>
+                            <ul>
+                                <li>En cas de faute grave (laissé à l’appréciation du bureau)</li>
+                            </ul>
+                            <p>Le membre ayant perdu sa qualité de membre en raison de faute grave, le demeure jusqu’à réparation du préjudice commis. Celui ayant manqué les cotisations pourra être réhabilité par acquittement du passif.</p>
+                            <p>Il est cependant laissé à l’appréciation du bureau exécutif réuni en assemblée extraordinaire ; plus deux représentants de la communauté, de la perte du statut de membre pour toute autre raison n’ayant pas été prévue par les textes.</p>
+                        </article>
+                    </section>
+                    
+                    <section id="chapter3">
+                        <h2>Chapitre 3 : Des missions de l’association</h2>
+                        <article>
+                            <h4>Article 7</h4>
+                            <p>Le C.E.C.T.A.S a pour objet d’assurer, de réunir tous les étudiants et chercheurs togolais résidants dans la région de Saint-Louis pour permettre à plusieurs personnes de mettre en commun leurs connaissances ou leurs activités dans un but autre que de partager des bénéfices.</p>
+                        </article>
+                    </section>
+                    <section id="chapter4">
+                        <h2>Chapitre 4 : Du fonctionnement de l’association</h2>
+                        <article>
+                            <h4>Article 8</h4>
+                            <p>Le bureau se réunit aussi souvent que l’exige l’intérêt de l’association. Il est tenu un procès-verbal des séances. Les procès-verbaux sont rédigés par le Secrétaire et signé par le Président. Ils sont transcrits sur un registre coté et paraphé par le président.
+                            </p>
+                        </article>
+                        <article>
+                            <h4>Article 9</h4>
+                            <p>
+                                L’assemblée générale comprend tous les membres. <br>
+            Elle se réunit au moins une fois par mois et chaque fois qu’elle est convoquée par le Président, ou sur la demande d’au moins 60% des membres. <br>
+            <br>L’ordre du jour est réglé par le Secrétaire général ou le Président. Le bureau de l’assemblée générale est celui des membres actifs. <br>
+            Le président préside, expose la situation morale de l’association et rend compte de l’activité de l’association. Le trésorier rend compte de sa gestion et soumet le bilan à l’approbation de l’assemblée générale.
+            <br>Les membres convoqués régulièrement peuvent être représentés par un autre membre par procuration écrite et signée. <br>
+            <br>Les convocations sont envoyées par message ou par coup de fil au moins 3 à 7 jours avant la date fixée pour la réunion et indiquent l’ordre du jour arrêté par le Président ou le Secrétaire général.
+                            </p>
+                        </article>
+                        <article>
+                            <h4>Article 10</h4>
+                            <p>
+                                L’assemblée générale a un caractère extraordinaire lorsqu’elle statue sur toutes modifications aux statuts. Elle peut décider la dissolution et l’attribution des biens de l’association, la fusion avec toute association ayant un objet similaire.
+            <br>Une telle assemblée devra être composée d’au moins 75% des membres.
+            <br>Il devra être statué à la majorité des 75% des voix des membres présents ou représentés.
+            <br>Une feuille de présence sera émargée et certifiée par les membres du bureau.
+            <br>Si le quorum n’est pas atteint lors de la réunion de l’assemblée, sur première convocation, l’assemblée sera convoquée à nouveau à quinze jours d’intervalle et, lors de cette nouvelle réunion, elle pourra valablement délibérer quel que soit le nombre des membres présents ou représentés.
+                            </p>
+                        </article>
+                        <article>
+                            <h4>Article 11</h4>
+                            <p>Les délibérations des assemblées sont constatées sur des procès-verbaux contenant le résumé des débats, le texte des délibérations et le résultat des votes. <br><br>
+                                Les procès-verbaux sont retranscrits, sans blanc ni rature, dans l'ordre chronologique sur le registre des délibérations de l'association, préalablement coté et paraphé par le Président. <br> <br>
+                                Les procès-verbaux des délibérations sont rédigés par le Secrétaire et signés par le Président et un autre membre du conseil.</p>
+                        </article>
+                        <article>
+                            <h4>Article 12</h4>
+                            <p>Les membres actifs pourront, s'ils le jugent nécessaire, arrêter le texte d'un règlement intérieur, qui détermine les détails d'exécution des présents statuts. Ce règlement sera soumis à l'approbation de l'assemblée générale, ainsi que ses modifications éventuelles.</p>
+                        </article>
+                    </section>
+                    <section id="chapter5">
+                        <h2>Chapitre 5 : Le bureau de l’association</h2>
+                        <h3>Section I : Conditions d’éligibilité des membres du bureau</h3>
+                        <article>
+                            <h4>Article 13</h4>
+                            <p>Est éligible au poste de présidence :
+                                <ul>
+                                    <li>Toute personne de citoyenneté togolaise ayant séjourné à Saint-Louis pendant une période d’au moins 12 mois</li>
+                                    <li>Toute personne ayant la qualité d’étudiant/chercheurs régulièrement inscrit à l’Université Gaston Berger                        </li>
+                                    <li>Toute personne ayant posé sa candidature sept (07) jours avant la tenue de l’assemblée générale élective.</li>
+                                </ul>
+            
+            Les candidats désireux de se présenter au poste de présidence devront spécifier de façon claire leur projet pour la communauté.
+            
+            <br>Il est admis un vote par procuration.
+            <br>Le président est élu à la majorité simple des voix des votants.
+                            </p>
+                        </article>
+                        <article>
+                            <h4>Article 14</h4>
+                            <p>Le président de l’association ne peut briguer qu’un mandat renouvelable une fois</p>
+                        </article> 
+                        <article>
+                            <h4>Article 15</h4>
+                            <p>
+                                En ce qui concerne l’élection aux autres postes du bureau, les candidats devront conformément à l’article 13 remplir les conditions de fonds exclus la contrainte de durée de séjour.
+                            </p>
+                        </article>
+            
+                        <article>
+                            <h4>Article 16</h4>
+                            <p>
+                                En cas de défaut de candidature, il sera désigné un comité ad-hoc soumis aux règles des articles 13 et 15.
+                                <br>La durée du comité ad-hoc devra être conforme aux dispositions de l’article 19 alinéa 2 du présent statut.
+                            </p>
+                        </article>
+                        <article>
+                            <h4>Article 17</h4>
+                            <p> 
+                                En cas de désaccord sur un sujet donné, il est reconnu au président d’imposer sa position à travers un droit de véto.
+                            </p>
+                        </article>
+                        <br><h3>Section II : Destitution du Président</h3><br>
+                        <article>
+                            <h4>Article 18</h4>
+                            <p> 
+                                Le président peut être destitué pour :
+                                <ul>
+                                    <li>Absence prolongée non justifiée de plus trois (03) mois</li>
+                                    <li>Passivité de ce dernier face aux obligations liées à son poste</li>
+                                    <li>Détournement de fonds et fautes graves</li>
+                                </ul>
+                                Si l’une des conditions préciser à l’alinéa précédent est remplit, la destitution pourra alors se faire en assemblée extraordinaire réunissant au moins 75% des membres actifs qui statueront sur le sort du président déchu. Le Vice-président occupera le poste du président déchu jusqu’à l’organisation des futurs élections.      
+                            </p>
+                        </article>
+                        <article>
+                            <h4>Article 19</h4>
+                            <p> 
+                                En cas du départ à mi-mandat du président, le vice-président assurera l’intérim jusqu’à l’organisation de futures élections.
+                                <br>Cependant, il gardera son statut d’intérimaire pour une durée de 03 mois après sa prise de fonction, délai au-delà duquel il devient définitivement président en exercice jusqu’aux nouvelles élections, nonobstant le retour du président déchu.
+                            </p>
+                        </article>
+                    </section>
+                    <article>
+                        <h4>Article 20</h4>
+                        <p> 
+                            En cas de défaillance d’un membre du bureau, il est tenu une assemblée générale extraordinaire pour choisir un intérimaire jusqu’au retour du membre défaillant ou en cas de départ définitif jusqu’à l’organisation de nouvelles élections.
+                        </p>
+                    </article>
+                    <article>
+                        <h4>Article 21</h4>
+                        <p> 
+                            En cas de défaillance d’un membre du bureau, il est tenu une assemblée générale extraordinaire pour choisir un intérimaire jusqu’au retour du membre défaillant ou en cas de départ définitif jusqu’à l’organisation de nouvelles élections.
+                        </p>
+                    </article>
+                   <br> <h3>Section III : Composition du bureau</h3><br>
+                    <article>
+                        <h4>Article 22</h4>
+                        <p> 
+                            Le bureau est composé du :
+                            <ul>
+                                <li>Président</li>
+                                <li>Vice-Président et chargé des relations extérieures</li>
+                                <li>Secrétaire Général</li>
+                                <li>chargé de la Communication</li>
+                                <li>Trésorier(e)</li>
+                            </ul>
+                           
+                          
+                        </p>
+                    </article>
+                    <br><h3>Section IV: Rôle des membres du bureau</h3><br>
+                    <article>
+                        <h4>Article 23</h4>
+                        <p> 
+                            Le Président convoque les assemblées générales et les réunions du CECTAS. Il représente l'association dans tous les actes de la vie civile, estudiantine et est investi de tous les pouvoirs à cet effet. Il peut déléguer certaines de ses attributions. Il a notamment qualité pour ester en justice au nom de l'association, tant en demande qu'en défense.
+                        </p>
+                    </article>
+                    <article>
+                        <h4>Article 24</h4>
+                        <p> 
+                            Le Président convoque les assemblées générales et les réunions du CECTAS. Il représente l'association dans tous les actes de la vie civile, estudiantine et est investi de tous les pouvoirs à cet effet. Il peut déléguer certaines de ses attributions. Il a notamment qualité pour ester en justice au nom de l'association, tant en demande qu'en défense.
+                        </p>
+                    </article>
+                    <article>
+                        <h4>Article 25</h4>
+                        <p>
+                            
+            Le secrétaire général est chargé de tout ce qui concerne la correspondance et les archives. Il rédige les procès-verbaux des délibérations et en assure la transcription sur les registres. Il tient le registre spécial, prévu par la loi du CECTAS, et assure l'exécution des formalités prescrites.
+            <br>Il développe également des actions de communication vers des publics variés en cohérence avec la stratégie générale de l'association. Il met en œuvre tout moyen, action, réseau de communication visant à faciliter celles-ci au sein et à l'extérieur de la structure.
+                        </p>
+                    </article>
+                    <article>
+                        <h4>Article 26</h4>
+                        <p>
+                            Le Trésorier est chargé de tout ce qui concerne la gestion du patrimoine de l'association. Il effectue tous paiements et perçoit toutes recettes sous la surveillance du Commissaire aux Comptes.
+            <br>Il tient une comptabilité régulière, au jour le jour, de toutes les opérations et rend compte à l'assemblée mensuelle, qui statue sur la gestion.
+            <br>Toutefois, les dépenses extraordinaires doivent être ordonnancées par le Président ou, à défaut, en cas d'empêchement, par le Vice-Président. Il rend compte de son mandat aux assemblées générales
+             </p>
+                    </article>
+                    <article>
+                        <h4>Article 27</h4>
+                        <p> 
+                            Il est mise en place à l’occasion d’une assemblée générale convoquée par le président, une commission d’organisation chargée d’organiser sous tous ses aspects une festivité, une activité, des colloques etc...
+                            <br>Ladite commission n’est désignée et formée qu’à chaque fois qu’il y a lieu de préparer une activité nécessitant une organisation particulière. A ce titre, elle ne fait donc pas partie du bureau.
+            
+                        </p>
+                    </article>
+                    <article>
+                        <h4>Article 28</h4>
+                        <p> 
+                            Les affaires sociales sont rattachées à la fonction du président de l’association qui consisteront à concevoir et à exécuter les destinés à favoriser l’épanouissement social de ses membres.
+            <br>Le Secrétaire peut délivrer toutes copies certifiées conformes qui font foi vis-à- vis des tiers.
+            
+                        </p>
+                    </article>
+                    <section id="chapter6">
+                        <h2>Chapitre 6 : Dissolution</h2>
+                        <article>
+                            <h4>Article 29</h4>
+                            <p> 
+                                La dissolution de l'association ne peut être prononcée que par l'assemblée générale extraordinaire, convoquée spécialement à cet effet et statuant aux conditions de quorum et de majorité prévues à l'article 10 du présent statut.
+            <br>L'assemblée générale extraordinaire désigne un ou plusieurs liquidateurs chargés des opérations de liquidation.
+            <br>Lors de la clôture de la liquidation, l'assemblée générale extraordinaire se prononce sur la dévolution de l'actif net au profit de toutes associations déclarées de son choix, ayant un objet similaire.
+                            </p>
+                        </article>
+                    </section>
+                    <section id="chapter7">
+                        <h2>Chapitre 7 : Les ressources</h2>
+                        <article>
+                            <h4>Article 30</h4>
+                            <p>Les ressources de l'association composent :
+                                <ul>
+                                    <li>Les cotisations</li>
+                                    <li>Les subventions accordées par l’Etat ou les Collectivités territoriales</li>
+                                    <li>La vente des produits ou de services</li>
+                                    <li>Les dons manuels
+                                        </li>
+                                </ul>
+                                Les autres ressources de la caisse sont celles qui ne sont pas interdites par les lois
+                                        et règlements en vigueur.
+                            </p>
+                        </article>
+                    </section>
+                    <section id="chapter8">
+                        <h2>Chapitre 8 : Du rôle de la Caisse et du commissaire aux Comptes</h2>
+                        <article>
+                            <h4>Article 31</h4>
+                            <p>La caisse finance toutes les activités de la communauté dans la mesure du possible.</p>
+                        </article>
+                        <article>
+                            <h4>Article 32</h4>
+                            <p>La caisse a l’obligation de soutenir tout membre actif étant en règle avec les textes de l’association.
+                                <br>Le soutien dont bénéficient les membres doit être octroyé sous forme de prêt.
+                            </p>
+                        </article>
+                        <article>
+                            <h4>Article 33</h4>
+                            <p>
+                                Le montant minimal devant exister dans la caisse ne doit pas être en dessous de 25.000F
+            <br>Sauf en cas de force majeur, tout membre du bureau ayant occasionné une dépense en dehors de l’intérêt de la communauté devra non seulement rendre compte du décaissement mais aussi rembourser en plus du déficit 10% de la somme dépensée sur le montant fixe de base, sous forme de pénalité.
+                            </p>
+                        </article>
+                        <article>
+                            <h4>Article 34</h4>
+                            <p>En cas de départ provisoire du trésorier, il est formé une commission ad hoc chargé de détenir et de gérer les fonds jusqu’au retour du trésorier.
+                                <br>En cas de départ définitif du trésorier à mi-mandat, il est prévu de nouvelles élections du trésorier devant conduire le mandat à terme.</p>
+                        </article>
+                        <article>
+                            <h4>Article 35</h4>
+                            <p>
+                                Pour toute dépense, le commissaire aux comptes devra certifier les sorties et donner son accords conformément aux intérêts de la communauté.
+                                <br>Il devra contrôler toutes les entrées et les sorties de la caisse, sa signature devra être apposée pour toute entrée et sortie.
+                                <br>Il constitue un organe à part entier et n’est pas subordonné au pouvoir du président.
+                                <br>Toute tentative d’intimidation ou d’interférence de la part du président dans l’exercice des prérogatives reconnues au commissaire aux comptes est passible de sanctions.
+                            </p>
+                        </article>
+                    </section>
+                </main>
+                <br><br><br>
+                <footer>
+                    <p>&copy; 2024 Cercle des Etudiants et Chercheurs Togolais à Saint-Louis</p>
+                </footer>
+           
+
         </div>
     </div>
     <script>
-        const validUsername = "admin";
-        const validPassword = "Cectas/24";
+        let elements = [
+            'T1107', 'T1120', 'T1113', 'T1026', 'T1112',
+            'T1010', 'T1023', 'T1127', 'T1118', 'T1122',
+            'T1021', 'T1009', 'T1015', 'T1001', 'T1014',
+            'T1017', 'T1004', 'T1030', 'T1031', 'T1029',
+            'T1125', 'T1002', 'T1108', 'T1011', 'T1119',
+            'T1128', 'T1103', 'T1106', 'T1005', 'T1016',
+            'T1024', 'T1133', 'T1032'
+        ];
 
         function login() {
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-
-            if (username === validUsername && password === validPassword) {
+            const identifier = document.getElementById("identifier").value;
+            if (elements.includes(identifier)) {
                 document.getElementById("login-form").style.display = "none";
-                document.getElementById("links").style.display = "flex";
+                document.getElementById("links").style.display = "block";
+                document.getElementById("links").innerHTML = "<p>Bienvenue, " + validIdentifier + "!</p>";
             } else {
                 document.getElementById("error-message").style.display = "block";
             }
         }
 
-        // Ajout d'un écouteur d'événement pour la touche "Entrée" sur le champ de saisie "Username"
-        document.getElementById("username").addEventListener("keyup", function(event) {
+        // Ajout d'un écouteur d'événement pour la touche "Entrée" sur le champ de saisie "Identifier"
+        document.getElementById("identifier").addEventListener("keyup", function(event) {
             if (event.key === "Enter") {
                 document.getElementById("password").focus();
             }
@@ -145,7 +494,7 @@ body {
         document.getElementById("password").addEventListener("keyup", function(event) {
             if (event.key === "Enter") {
                 login();
-            }
+            } 
         });
     </script>
 </body>
