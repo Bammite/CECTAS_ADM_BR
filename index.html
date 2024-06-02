@@ -259,38 +259,9 @@
               <label for="formation">----REGLEMENT INTERIEURE-----
               </label>
             </div></a>
-            <a href="#paie"><div class="option">
-              <label for="news">Les formations en paie</label>
-            </div></a>
   
-            <a href="#drtscl"><div class="option">
-              <label for="news">Les formations en droit social
-              </label>
-            </div></a>
-  
-            <a href="#drtsct"><div class="option">
-              <label for="news">Les formations en droit des societe
-              </label>
-            </div></a>
-  
-            <a href="#risques"><div class="option">
-              <label for="news">Demarche d'elaboration d'une cartographie des risques juridiques</label>
-            </div></a>
-  
-            <a href="#mrpb"><div class="option">
-              <label for="news">Formation sur les Marchés publics</label>
-            </div></a>
-  
-            <a href="#sec"><div class="option">
-             <label for="news">Formation en secretariat et en assistance juridique</label>
-            </div></a>
-  
-            <a href="#rcv"><div class="option">
-              <label for="news">Formation en recouvrement de créance</label>
-            </div></a>
-  
-            <a href="#tab"><div class="option">
-              <label for="news">Formation en Tableaux de bords d'une direction juridique</label>
+            <a href="#statut"><div class="option">
+              <label for="news">----STATUT----</label>
             </div></a>
   
           </div>
@@ -452,7 +423,7 @@
 
 
 <br><br><br><br>
-                <h1 class="statut"> STATUT DU CECTAS</h1>
+                <h1 class="statut" id="statut"> STATUT DU CECTAS</h1>
                 <section id="chapter1">
                     <h2>Chapitre 1 : De l’association, son siège et sa durée</h2>
                     <article>
@@ -821,12 +792,12 @@
             textElements[textIndex].innerHTML += texts[textIndex].charAt(charIndex);
             charIndex++;
             cursorElement.style.left = textElements[textIndex].clientWidth + "px";
-            setTimeout(typeNextChar, 100); 
+            setTimeout(typeNextChar, 60); 
         } else if (textIndex < texts.length - 1) {
             textIndex++;
             charIndex = 0;
             cursorElement.style.left = '0px';
-            setTimeout(typeNextChar, 100);
+            setTimeout(typeNextChar, 60);
         } else {
             cursorElement.style.display = 'none';
         }
