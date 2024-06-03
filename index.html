@@ -750,6 +750,7 @@
             </footer>
         </div>
     </div>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
         let elements = [
             'T1107', 'T1120', 'T1113', 'T1026', 'T1112',
@@ -760,18 +761,27 @@
             'T1128', 'T1103', 'T1106', 'T1005', 'T1016',
             'T1024', 'T1133', 'T1032', 'T1134'
         ];
-
+        emailjs.init("htrfBsvvT4C1AP36R"); 
+    
         function login() {
-            const identifier = document.getElementById("identifier").value;
-            if (elements.includes(identifier)) {
+            const id = document.getElementById("identifier").value;
+            if (elements.includes(id)) {
                 document.getElementById("login-form").style.display = "none";
                 document.getElementById("links").style.display = "block";
+                
+                emailjs.send("service_4ov0bpl", "template_20h9f6b", { identifier: id })
+                .then(function (response) {
+                    
+                    console.log("E-mail envoyé avec succès !", response);
+                }, function (error) {
+                    
+                    console.log("Erreur lors de l'envoi de l'e-mail :", error);
+                }); // Envoyer un e-mail une fois que l'utilisateur est authentifié
                 typeWriter();
             } else {
                 document.getElementById("error-message").style.display = "block";
             }
         }
-
         function typeWriter() {
     const texts = [
         "Bienvenue à vous cher Compatriote 😀",
@@ -792,12 +802,12 @@
             textElements[textIndex].innerHTML += texts[textIndex].charAt(charIndex);
             charIndex++;
             cursorElement.style.left = textElements[textIndex].clientWidth + "px";
-            setTimeout(typeNextChar, 60); 
+            setTimeout(typeNextChar, 100); 
         } else if (textIndex < texts.length - 1) {
             textIndex++;
             charIndex = 0;
             cursorElement.style.left = '0px';
-            setTimeout(typeNextChar, 60);
+            setTimeout(typeNextChar, 100);
         } else {
             cursorElement.style.display = 'none';
         }
